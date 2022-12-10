@@ -34,7 +34,7 @@
 
 
     overflow: hidden;
-    animation: writing 3s ease-in-out;
+    animation: writing 5s ease-in-out;
 }
 
 .navbar {
@@ -65,4 +65,8 @@
   
   .my-button:hover {
     background-color: #039be5;
+  }
+
+  body {
+    overflow-y: scroll;
   }

@@ -4,6 +4,7 @@ import './ProfilePage.css';
 class ProfilePage extends React.Component {
   constructor() {
     super();
+    this.profileContainerRef = React.createRef();
     this.state = {
       hover: false
     };
@@ -16,6 +17,13 @@ class ProfilePage extends React.Component {
     });
   }
 
+  componentDidMount() {
+    const imageElement = document.querySelector('#CodeHappening');
+    imageElement.addEventListener('click', () => {
+      this.profileContainerRef.current.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
   // Use property initializer syntax to define the handleClick method
   handleClick = () => {
     // Navigate to the Google homepage when the button is clicked
@@ -24,11 +32,17 @@ class ProfilePage extends React.Component {
 
   render() {
     return (
-      <div className="profile-container">
-        <nav className="navbar navbar-expand-lg navbar-light">
-          <a className="navbar-brand" href="https://github.com/ArjavaTripathi">Github</a>
-        </nav>
-        <h1 className="profile-header">Arjava Tripathi</h1>
+      <div ref={this.profileContainerRef} className="profile-container">
+        <img
+          id="CodeHappening"
+          src={require('./ESCR.jpg')}
+          alt="Code in the making!"
+        />
+        <div className="profile-container">
+          <nav className="navbar navbar-expand-lg navbar-light">
+            <a className="navbar-brand" href="https://github.com/ArjavaTripathi">Github</a>
+          </nav>
+          <h1 className="profile-header">Arjava Tripathi</h1>
         <button
           className="my-button"
           onMouseEnter={this.toggleHover}
@@ -38,6 +52,7 @@ class ProfilePage extends React.Component {
           Projects
         </button>
 
+      </div>
       </div>
     );
   }
